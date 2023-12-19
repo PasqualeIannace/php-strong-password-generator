@@ -23,10 +23,15 @@ $lettereMaiuscole = explode(" ", $lettereMaiuscole);
         <h1>La password generata</h1>
         <p><?php echo $pwLength ?></p>
 
-        <?php foreach ($lettereMaiuscole as $lettera) {
-            echo $lettera;
-            echo "<br>";
-        }
+        <?php $random = array_rand($lettereMinuscole, $pwLength);
+
+        for ($i = 0; $i < $pwLength; $i++) {
+
+            $randomIndex = $random[$i];
+            $password[] = $lettereMinuscole[$randomIndex];
+        };
+        $password = implode($password);
+        echo "La password è: $password";
         ?>
     </div>
 </body>
