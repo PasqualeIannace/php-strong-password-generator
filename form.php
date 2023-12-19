@@ -11,6 +11,12 @@
 <body class="bg-primary-subtle">
     <div class="container bg-white">
         <h1 class="text-center">Password Generator</h1>
+
+        <form action="password.php">
+            <label for="length">Lunghezza password: </label>
+            <input id="length" type="number" name="number" min="4" required>
+            <button class="btn btn-primary" type="submit">Invia</button>
+        </form>
     </div>
 </body>
 
