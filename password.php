@@ -10,28 +10,34 @@
 
 <?php
 $pwLength = $_GET["number"];
+$password = array();
 
-$lettere = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
+$lettere = "abcdefghijklmnopqrstuvwxyz";
 $lettereMaiuscole = strtoupper($lettere);
-$lettereMinuscole = explode(" ", $lettere);
-$lettereMaiuscole = explode(" ", $lettereMaiuscole);
+$numeri = "0123456789";
+$simboli = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 
 ?>
 
 <body class="bg-primary-subtle">
     <div class="container bg-white">
-        <h1>La password generata</h1>
+        <h1>Password generata</h1>
         <p><?php echo $pwLength ?></p>
 
-        <?php $random = array_rand($lettereMinuscole, $pwLength);
+        <?php
+        $password = random_str($pwLength, $lettere);
 
-        for ($i = 0; $i < $pwLength; $i++) {
+        function random_str($pwLength, $lettere)
+        {
+            $alphaLength = strlen($lettere) - 1;
+            for ($i = 0; $i < $pwLength; $i++) {
+                $n = rand(0, $alphaLength);
+                $password[] = $lettere[$n];
+            }
+            return implode($password);
+        }
 
-            $randomIndex = $random[$i];
-            $password[] = $lettereMinuscole[$randomIndex];
-        };
-        $password = implode($password);
-        echo "La password è: $password";
+        echo $password;
         ?>
     </div>
 </body>
