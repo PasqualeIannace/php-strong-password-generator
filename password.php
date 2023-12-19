@@ -10,7 +10,7 @@
 
 <?php
 $pwLength = $_GET["number"];
-$pwMinuscole = array();
+$password = array();
 $lettereMaiuscole = array();
 
 $lettere = "abcdefghijklmnopqrstuvwxyz";
@@ -21,34 +21,22 @@ $simboli = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 ?>
 
 <body class="bg-primary-subtle">
-    <div class="container bg-white">
+    <div class="container bg-white text-center">
         <h1>Password generata</h1>
-        <p><?php echo $pwLength ?></p>
+        <p>Lunghezza: <?php echo $pwLength ?></p>
 
         <?php
-        $pwMinuscole = randomMinuscole($pwLength, $lettere);
-        $pwMinuscole .= random($pwLength, $lettereMaiuscole);
-        $pwMinuscole .= random($pwLength, $numeri);
-        $pwMinuscole .= random($pwLength, $simboli);
+        $password = randomMinuscole($pwLength, $lettere);
+        $password .= random($pwLength, $lettereMaiuscole);
+        $password .= random($pwLength, $numeri);
+        $password .= random($pwLength, $simboli);
 
-        function randomMinuscole($pwLength, $lettere)
+        function randomMinuscole($pwLength, $carattere)
         {
             if ($pwLength % 2 !== 0) {
                 $resto = $pwLength % 2;
                 $pwLength += $resto;
             }
-            $pwLength /= 4;
-
-            $alphaLength = strlen($lettere) - 1;
-            for ($i = 0; $i < $pwLength; $i++) {
-                $n = rand(0, $alphaLength);
-                $password[] = $lettere[$n];
-            }
-            return implode($password);
-        }
-
-        function random($pwLength, $carattere)
-        {
             $pwLength /= 4;
 
             $alphaLength = strlen($carattere) - 1;
@@ -59,7 +47,23 @@ $simboli = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
             return implode($password);
         }
 
-        echo str_shuffle($pwMinuscole);
+        function random($pwLength, $carattere)
+        {
+            if ($pwLength % 2 !== 0) {
+                $resto = $pwLength % 2;
+                $pwLength -= $resto;
+            }
+            $pwLength /= 4;
+
+            $alphaLength = strlen($carattere) - 1;
+            for ($i = 0; $i < $pwLength; $i++) {
+                $n = rand(0, $alphaLength);
+                $password[] = $carattere[$n];
+            }
+            return implode($password);
+        }
+
+        echo str_shuffle($password);
         ?>
     </div>
 </body>
