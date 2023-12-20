@@ -18,7 +18,7 @@ $lettereMaiuscole = array();
 $lettere = "abcdefghijklmnopqrstuvwxyz";
 $lettereMaiuscole = strtoupper($lettere);
 $numeri = "0123456789";
-$simboli = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+$simboli = "!#$%&'()*+,-./:;=?@[\]^_`{|}~"
 
 ?>
 
