@@ -2,11 +2,14 @@
 <?php
 function randomMinuscole($pwLength, $carattere)
 {
-    if ($pwLength % 2 !== 0) {
-        $resto = $pwLength % 2;
-        $pwLength += $resto;
+    $resto = 0;
+
+    if ($pwLength % 4 !== 0) {
+        $resto = $pwLength % 4;
+        $pwLength -= $resto;
     }
     $pwLength /= 4;
+    $pwLength += $resto;
 
     $alphaLength = strlen($carattere) - 1;
     for ($i = 0; $i < $pwLength; $i++) {
@@ -18,8 +21,8 @@ function randomMinuscole($pwLength, $carattere)
 
 function random($pwLength, $carattere)
 {
-    if ($pwLength % 2 !== 0) {
-        $resto = $pwLength % 2;
+    if ($pwLength % 4 !== 0) {
+        $resto = $pwLength % 4;
         $pwLength -= $resto;
     }
     $pwLength /= 4;

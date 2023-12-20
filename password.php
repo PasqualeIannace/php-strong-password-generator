@@ -34,6 +34,11 @@ $simboli = "!#$%&'()*+,-./:;=?@[\]^_`{|}~"
         $password .= random($pwLength, $simboli);
 
         echo str_shuffle($password);
+        echo "<br>";
+        echo "Lunghezza pw:" . strlen($password);
+
+        echo "<br>";
+        echo "<a class='btn btn-info' href='form.php'>Torna indietro</a>";
         ?>
     </div>
 </body>

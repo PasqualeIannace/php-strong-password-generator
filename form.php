@@ -15,6 +15,9 @@
         <form action="password.php">
             <label for="length">Lunghezza password: </label>
             <input id="length" type="number" name="number" min="4" required>
+            <input type="checkbox" name="L" id="">
+            <input type="checkbox" name="N" id="">
+            <input type="checkbox" name="S" id="">
             <button class="btn btn-primary" type="submit">Invia</button>
         </form>
     </div>
